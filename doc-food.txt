@@ -1,0 +1,213 @@
+1. Technical Planning for Restaurant + Delivery Service
+=======================================================>
+
+ 1. **Frontend**
+- **Homepage**: The main page showcasing banners, featured products, and navigation.
+- **Product Listing**: A page displaying food items with search and filter options.
+- **Cart**: A summary of selected items with the option to modify.
+- **Checkout**: A user-friendly interface for finalizing orders with payment options.
+
+---
+
+ 2. **Sanity CMS**
+- **Product Management**: Store and manage product details (name, price, category, image).
+- **Order Management**: Record and track customer orders with their details.
+
+---
+
+ 3. **Third-Party APIs**
+- **Payment Gateway**: Integration of Stripe or PayPal for secure transactions.
+- **Shipment Tracking**: Use AfterShip or courier APIs to provide delivery status.
+
+---
+
+[Frontend]
+    |
+    |-- Homepage  (UI)
+    |-- Product Listing
+    |-- Cart
+    |-- Checkout
+
+   [Sanity CMS]
+    |
+    |-- Products (Store, Update, Fetch)
+    |-- Orders (Track, Manage)
+
+  [APIs]
+    |
+    |-- Payment Gateway (Stripe/PayPal)
+    |-- Shipment Tracking (AfterShip)
+```
+    Explanation
+1. **Frontend** interacts with users directly, showing products and collecting orders.
+2. **Sanity CMS** works in the backend to manage product and order data.
+3. **APIs** are used for payments and tracking shipments.
+
+2. System Architecture Ka Plan Banana: 
+=======================================>
+[Frontend (Next.js)]
+    |
+    v
+[Sanity CMS]
+    |
+    v
+[Product Data API]
+    |
+    v
+[Third-Party APIs]
+    |-- Shipment Tracking API
+    |-- Payment Gateway
+
+
+
+
+API Requirements Plan for Menu Page
+========================================>
+
+
+APIs Structure
+1. Menu Items Fetch API
+Endpoint Name: /menu-items
+Method: GET
+Purpose: Menu ke food items ki details fetch karna.
+2. Category Fetch API
+Endpoint Name: /categories
+Method: GET
+Purpose: Food items ki categories fetch karna (e.g., Drinks, Snacks).
+3. Search Item API
+Endpoint Name: /search
+Method: GET
+Purpose: Search query ke zariye specific item fetch karna.
+4. Add to Cart API
+Endpoint Name: /cart/add
+Method: POST
+Purpose: User ka selected item cart mein add karna.
+5. Favorites API
+Endpoint Name: /favorites
+Method: GET
+
+
+API Schema Example for Products
+===============================> 
+
+
+
+export default {
+  name: "product",
+  type: "document",
+  title: "Product",
+  fields: [
+    {
+      name: "name",
+      type: "string",
+      title: "Product Name", // Food item ka naam (e.g., Pizza, Burger)
+    },
+    {
+      name: "price",
+      type: "number",
+      title: "Price", // Item ki price
+    },
+    {
+      name: "description",
+      type: "text",
+      title: "Description", // Item ka short description (e.g., Spicy, Vegan)
+    },
+    {
+      name: "category",
+      type: "string",
+      title: "Category", // Item ka category (e.g., Drinks, Desserts)
+    },
+    {
+      name: "image",
+      type: "image",
+      title: "Image", // Item ki image
+    },
+  ],
+};
+
+
+4. Documentation Structure
+===============================>
+
+[Frontend: Next.js]
+      |
+  [Sanity CMS]
+      |
+------------------------------
+|               |            |
+Product Data   Payment    Shipment
+ API          Gateway       API
+
+
+5. Workflow Diagrams
+=================>
+
+
+
+[User] --> [Frontend: Menu Page] --> [API] --> [Sanity CMS]
+
+
+
+Cart Workflow
+=================>
+[User] --> [Frontend: Add to Cart] --> [Cart API] --> [Sanity CMS]
+
+
+ Sanity Schemas
+================>
+
+
+Product Schema
+===============>
+export default {
+  name: "product",
+  type: "document",
+  title: "Product",
+  fields: [
+    { name: "name", type: "string", title: "Product Name" },
+    { name: "price", type: "number", title: "Price" },
+    { name: "description", type: "text", title: "Description" },
+    { name: "category", type: "string", title: "Category" },
+    { name: "image", type: "image", title: "Image" },
+  ],
+};
+
+Purpose of Documentation
+============================>
+
+Clear Understanding: Ensures all team members know how the system works.
+Future Reference: Useful when the system needs to be expanded or updated.
+Error Handling: Helps identify and resolve errors by reviewing the architecture and workflows.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
